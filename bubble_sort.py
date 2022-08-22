@@ -15,7 +15,8 @@ def bubble_sort(array):
     
     return array
 
-if __name__ == "__main__":
-    array = [randint(1, 20) for i in range(10)]
-    print("Unsorted array: ", array)
-    print("Sorted array, ", bubble_sort(array))
+# if __name__ == "__main__":
+#     array = [randint(1, 20) for i in range(10)]
+#     print("Unsorted array: ", array)
+#     print("Sorted array, ", bubble_sort(array))
+

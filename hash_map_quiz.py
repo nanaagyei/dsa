@@ -107,5 +107,5 @@ def non_duplicate(string):
     #     if hash_map[string[i]] == 1:
     #         return string[i]
 
-word = "minimum"
-print(non_duplicate(word))
+# word = "minimum"
+# print(non_duplicate(word))
