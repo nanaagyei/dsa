@@ -2,7 +2,7 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
-        self.prev = None
+        self.prev = None # for a doubly linked list
     
     def __str__(self):
         return str(self.data)
@@ -136,6 +136,7 @@ class DoublyLinkedList:
         self.head = head
         self.tail = tail
     
+    # inserting value at the end of a doubly linked list
     def insert_at_end(self, data):
         new_node = Node(data)
 
