@@ -69,6 +69,13 @@ class LinkedList:
         while temp:
             print(temp.data)
             temp = temp.next
+    
+    # returns last element in the list
+    def print_last_element(self):
+        temp = self.head
+        while temp.next:
+            temp = temp.next
+        return temp.data
 
     def delete(self, key):
         temp = self.head
@@ -97,9 +104,11 @@ class LinkedList:
         node_after_deleted = current_node.next.next
         current_node.next = node_after_deleted
 
+    # yet to understand this one
     def delete_at_pos_recursive(self, pos):
         self.delete_at_pos_recursive_helper(self.head, pos, 0)
 
+    # yet to fully understand
     def delete_at_pos_recursive_helper(self, temp, pos, count):
         if temp is None:
             return
@@ -147,3 +156,10 @@ class DoublyLinkedList:
             new_node.prev = self.tail
             self.tail.next = new_node
             self.tail = new_node
+
+     # prints all elements of doubly linked list in reverse order   
+    def print_reverse(self):
+        temp = self.tail
+        while temp:
+            print(temp.data)
+            temp = temp.prev
