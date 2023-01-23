@@ -8,13 +8,7 @@ class Tree:
     """Tree data structure is a binary tree.
     The left subtree of a node contains only nodes with keys lesser than the node's key.
     The right subtree of a node contains only nodes with keys greater than the node's key.
-    The left and right subtrees of a node may, or may not, be empty.
-    A node is said to be a leaf if it has no children.
-    A node is said to be a root if it is the root of the tree.
-    A tree with no nodes is called an empty tree.
-    A tree with one node is called a singleton tree.
-    A tree with n nodes is called a complete tree.
-    A tree with n nodes is called a full tree."""
+    """
     def __init__(self):
         """
         Initialize the tree
@@ -23,7 +17,7 @@ class Tree:
 
     def insert(self, data):
         """
-        Insert a node into the tree
+        Insert a node into the tree. Checks if tree has a root node
         """
         if self.root is None:
             self.root = Node(data)
@@ -32,7 +26,7 @@ class Tree:
 
     def insert_node(self, data, node):
         """
-        Insert a node into the tree"""
+        Insert a node into the tree. Inserts into either left or right child"""
         if data < node.data:
             if node.left is None:
                 node.left = Node(data)
@@ -46,13 +40,13 @@ class Tree:
 
     def print_tree(self):
         """
-        Print the tree"""
+        Print the tree from the root node"""
         if self.root is not None:
             self.print_node(self.root)
 
     def print_node(self, node):
         """
-        Print the tree"""
+        Print node from tree inorder"""
         if node is not None:
             self.print_node(node.left)
             print(str(node.data) + " ")
@@ -80,7 +74,7 @@ class Tree:
     
     def delete(self, data):
         """
-        Delete a node from the tree"""
+        Main method to delete node from tree"""
         if self.root is not None:
             self.root = self.delete_node(data, self.root)
     
@@ -152,3 +146,6 @@ class Tree:
             self.print_tree_pre_order_node(node.left)
             self.print_tree_pre_order_node(node.right)
     
+
+if __name__ == "__main__":
+    pass
