@@ -18,7 +18,7 @@ class Stack:
     
     def read(self):
         if self.data:
-            return self.data[-1]
+            return self.data[0]
         else:
             return None
 
@@ -88,4 +88,4 @@ class Linter:
 # Example
 
 linter = Linter()
-print(linter.lint("( x = (y:[1, 2, 3))"))
+print(linter.lint("( x = (y:[1, 2, 3]))"))
