@@ -1,4 +1,4 @@
-from stack_queues import Queue  # Import Queue class from stack_queues module
+from data_structures_algos.stack_queues import Queue  # Import Queue class from stack_queues module
 
 # Vertex class for the graph
 
