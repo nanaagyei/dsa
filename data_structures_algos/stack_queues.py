@@ -32,6 +32,17 @@ class Queue:
         self.data = []
 
     def enqueue(self, element):
+
+        """
+        Adds an element to the end of the queue.
+
+        Parameters:
+            element (Any): The element to be added to the queue.
+
+        Returns:
+            None
+        """
+
         return self.data.append(element)
 
     def dequeue(self):
@@ -41,19 +52,113 @@ class Queue:
             return None
     
     def read(self):
+        """
+        Returns the first element of the data list.
+
+        Returns:
+            The first element of the data list if it exists, otherwise None.
+        """
         if self.data:
             return self.data[0]
         else:
             return None
+
+
+class CircularQueue():
+    """
+    Creates a circular queue
+    """
+
+    def __init__(self, size):
+        self.size = size
+        self.queue = [None] * size # create an array (queue) of length, size
+        self.head = self.tail = -1 # initialize head and tail indices to -1 if queue is empty
+        
+    def enqueue(self, data):
+        """
+        Enqueues the given data into the circular queue.
+
+        Parameters:
+            data (Any): The data to be enqueued.
+
+        Returns:
+            None
+        """
+        if (self.tail + 1) % self.size == self.head:
+            print("Queue is full\n")
+        else:
+            if self.head == -1:
+                self.head = 0
+            self.tail = (self.tail + 1) % self.size
+            self.queue[self.tail] = data
+    
+    def dequeue(self):
+        """
+        Dequeues an element from the circular queue.
+
+        Returns:
+            Any: The dequeued element if the queue is not empty, None otherwise.
+
+        Raises:
+            None
+        """
+        if self.head == -1:
+            print("Queue is empty\n")
+        else:
+            data = self.queue[self.head]
+            if self.head == self.tail: # last/only element in the queue
+                self.head = self.tail = -1
+            else:
+                self.head = (self.head + 1) % self.size # increase the head index circularly
+            return data
+
+    def print_queue(self):
+        """
+        Prints the elements of the circular queue.
+
+        Returns:
+            None
+        """
+        if self.head == -1:
+            print("Queue is empty\n")
+        else:
+            i = self.head
+            while True:
+                print(self.queue[i], end = " ")
+                i = (i + 1) % self.size
+                if i == self.tail:
+                    break
 
 #########################################################################################
 # Using the stack class in a real world code
 class Linter:
 
     def __init__(self):
+
+        """
+        Initializes a new instance of the Linter class.
+
+        This constructor creates a new instance of the Linter class and initializes its 'stack' attribute
+        with a new instance of the Stack class.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+        """
         self.stack = Stack()
 
     def lint(self, text):
+        """
+        Checks the given text for balanced opening and closing braces.
+
+        Parameters:
+            text (str): The text to be checked.
+
+        Returns:
+            Union[bool, str]: True if the text has balanced braces, otherwise a string indicating the mismatched or missing brace.
+        """
         for char in text:
             if self.is_opening_brace(char):
                 self.stack.push(char)
@@ -68,6 +173,15 @@ class Linter:
         return True
     
     def is_opening_brace(self, char):
+        """
+        Check if the given character is an opening brace.
+
+        Parameters:
+            char (str): The character to be checked.
+
+        Returns:
+            bool: True if the character is an opening brace, False otherwise.
+        """
         braces = ["(", "{", "["]
         if char in braces:
             return True
