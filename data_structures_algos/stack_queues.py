@@ -163,11 +163,13 @@ class Linter:
             if self.is_opening_brace(char):
                 self.stack.push(char)
             elif self.is_closing_brace(char):
+                print(f"Current elements in stack: {self.stack.data}")
                 popped_opening_brace = self.stack.pop()
                 if not popped_opening_brace:
                     return f"{char} doesn't have an opening brace"
                 if self.is_not_match(popped_opening_brace, char):
                     return f"{char} has mismatched opening brace"
+                print(f"Updated stack: {self.stack.data}")
         if self.stack.read():
             return f"{self.stack.read()} does not have closing brace"
         return True
