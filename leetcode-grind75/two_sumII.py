@@ -16,7 +16,7 @@ Your solution must use only constant extra space.
 
 class Solution:
     def twoSum(self, numbers, target):
-        left, right = 0, len(numbers)
+        left, right = 0, len(numbers) - 1
 
         while left < right:
             twoSum = numbers[left] + numbers[right]
