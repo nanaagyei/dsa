@@ -10,6 +10,31 @@ Input: nums = [7]
 Output: [[7]]
 """
 
+# Solution 1
 class Solution:
     def permute(self, nums: list[int]) -> list[list[int]]:
-        pass
+        if len(nums) == 0:
+            return [[]]
+        
+        result = []
+        perms = self.permute(nums[1:])
+
+        for p in perms:
+            for i in range(len(p) + 1):
+                result.append(p[:i] + [nums[0]] + p[i:])
+        return result
+    
+# Solution 2
+
+class Solution2:
+
+    def permute(self, nums: list[int]) -> list[list[int]]:
+        
+        perms = [[]]
+        for n in nums:
+            new_perm = []
+            for p in perms:
+                for i in range(len(p) + 1):
+                    new_perm.append(p[:i] + [n] + p[i:])
+            perms = new_perm
+        return perms
