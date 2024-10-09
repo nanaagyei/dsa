@@ -20,8 +20,46 @@ Window position            Max
  1  2  1 [0  4  2] 6        4
  1  2  1  0 [4  2  6]       6
 """
-
+from collections import deque
 
 class Solution:
     def maxSlidingWindow(self, nums: list, k: int) -> list:
-        pass
+        # Brute Force
+        # output = []
+
+        # left = 0
+
+        # for right in range(k - 1, len(nums)):
+        #     if right + 1 < len(nums):
+        #         subarray = nums[left: right + 1]
+                
+        #     else:
+        #         subarray = nums[left:]
+            
+        #     output.append(max(subarray))
+            
+        #     left += 1
+        # return output
+
+        # Deque
+        left = right = 0
+        q = deque()
+        output = []
+
+        while right < len(nums):
+            while q and nums[q[-1]] < nums[right]:
+                q.pop()
+
+            q.append(right)
+
+            if left > q[0]:
+                q.popleft()
+            
+            if (right + 1) >= k:
+                output.append(nums[q[0]])
+                left += 1
+
+            right += 1
+
+        return output
+        
