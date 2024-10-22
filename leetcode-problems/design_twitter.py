@@ -5,17 +5,16 @@ Users and tweets are uniquely identified by their IDs (integers).
 
 Implement the following methods:
 
-Twitter() Initializes the twitter object.
-void postTweet(int userId, int tweetId) Publish a new tweet with ID tweetId by the user userId. You may assume that each tweetId is unique.
-List<Integer> getNewsFeed(int userId) Fetches at most the 10 most recent tweet IDs in the user's news feed. 
+- Twitter() Initializes the twitter object.
+- void postTweet(int userId, int tweetId) Publish a new tweet with ID tweetId by the user userId. You may assume that each tweetId is unique.
+- List<Integer> getNewsFeed(int userId) Fetches at most the 10 most recent tweet IDs in the user's news feed. 
 Each item must be posted by users who the user is following or by the user themself. Tweets IDs should be ordered from most recent to least recent.
-void follow(int followerId, int followeeId) The user with ID followerId follows the user with ID followeeId.
-void unfollow(int followerId, int followeeId) The user with ID followerId unfollows the user with ID followeeId.
-Example 1:
+- void follow(int followerId, int followeeId) The user with ID followerId follows the user with ID followeeId.
+- void unfollow(int followerId, int followeeId) The user with ID followerId unfollows the user with ID followeeId.
 
+Example 1:
 Input:
 ["Twitter", "postTweet", [1, 10], "postTweet", [2, 20], "getNewsFeed", [1], "getNewsFeed", [2], "follow", [1, 2], "getNewsFeed", [1], "getNewsFeed", [2], "unfollow", [1, 2], "getNewsFeed", [1]]
-
 Output:
 [null, null, null, [10], [20], null, [20, 10], [20], null, [10]]
 

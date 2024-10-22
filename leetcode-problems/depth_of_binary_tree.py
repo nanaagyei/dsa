@@ -12,6 +12,7 @@ Input: root = []
 Output: 0
 """
 
+from collections import deque
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -22,4 +23,47 @@ class TreeNode:
 
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
-        pass
+        if not root:
+            return 0
+
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
+    
+
+# Time complexity: O(n)
+# Space complexity: O(n)
+# where n is the number of nodes in the tree
+
+#-----------------------------------------------------------------------------------------------#
+
+# BFS
+    def maxDepth2(self, root: TreeNode) -> int:
+        level = 0
+
+        if not root:
+            return level
+
+        queue = deque([root])
+
+        while queue:
+            level += 1
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+        return level
+
+# Time complexity: O(n)
+# Space complexity: O(n)
+# where n is the number of nodes in the tree
+
+if __name__ == "__main__":
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.right.right = TreeNode(5)
+
+    print(Solution().maxDepth(root))
